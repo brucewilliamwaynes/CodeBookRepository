@@ -13,14 +13,14 @@ public class A1485 {
                 String inputs[] = br.readLine().split(" ");
                 long A = Long.parseLong(inputs[0]);
                 long B = Long.parseLong(inputs[1]);
-                int countOne = 0;
+                int count = 0;
                 if(B == 1){
-                    countOne++;
+                    count++;
                     B = B+1;
                 }
                 while(A > 0){
                     A = A/B;
-                    countOne++;
+                    count++;
                 }
                 System.out.println(count);
             }
