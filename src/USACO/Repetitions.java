@@ -1,4 +1,4 @@
-package USACO;
+// package USACO;
 import java.io.*;
 
 public class Repetitions {
