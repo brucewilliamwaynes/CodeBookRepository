@@ -1,7 +1,7 @@
 /* package codechef; // don't place package name! */
 
 import java.io.*;
-import java.math.BigInteger;
+import java.util.Arrays;
 
 /* Name of the class has to be "Main" only if the class is public. */
 public class CodeForces
@@ -10,27 +10,53 @@ public class CodeForces
     {
         // your code goes here
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        if(br.ready()){int T = Integer.parseInt(br.readLine());
+        // if(br.ready()){
+            int T = Integer.parseInt(br.readLine());
             for(int t = 1; t <= T ; t++) {
                 String inputs[] = br.readLine().split(" ");
-                int A = Integer.parseInt(inputs[0]);
-                int B = Integer.parseInt(inputs[1]);
-                if(B == 1){
-                    System.out.println("NO");
-                } else {
-                    System.out.println("YES");
-                    BigInteger y = BigInteger.valueOf(A).multiply(BigInteger.valueOf(B));
-                    BigInteger z = BigInteger.valueOf(A).multiply(BigInteger.valueOf(B+1));
-                    StringBuffer ans = new StringBuffer();
-                    ans.append(A);
-                    ans.append(" ");
-                    ans.append(y);
-                    ans.append(" ");
-                    ans.append(z);
-                    System.out.println(ans.toString());
+                int n = Integer.parseInt(inputs[0]);
+                int m = Integer.parseInt(inputs[1]);
+                char inputArray[] = br.readLine().toCharArray(); //size n
+                String indexArray[] = br.readLine().split(" "); //size m
+                
+                char utilString[] = br.readLine().toCharArray(); //size m
+                Arrays.sort(utilString);
+                char helperString[] = new char[m];
+
+                int indexArr[]  = new int[m];
+
+                for(int idx = 0; idx < m; idx++) {
+                    indexArr[idx] = Integer.parseInt(indexArray[idx]);
                 }
+
+                Arrays.sort(indexArr);
+                
+                int idx = 0;
+                int helperIdx = 0;
+                
+                while(idx < m-1) {
+                    if(indexArr[idx] != indexArr[idx+1]) {
+                        helperString[idx] = utilString[helperIdx];
+                        helperIdx++;
+                    }
+                    idx++;
+                }
+
+                helperString[idx] = utilString[helperIdx];
+
+                for(int i = 0; i < m; i++) {
+                    if(helperString[i] == '\u0000') {
+                        continue;
+                    } else {
+                        inputArray[indexArr[i]-1] = helperString[i];
+                    }
+                }
+
+                System.out.println(String.valueOf(inputArray));
+                
+
             }
-        }
+        // }
     }
 
     // private static int findGCD(int i, int j, Map<Integer, Integer> myMap) {
