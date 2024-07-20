@@ -1,4 +1,4 @@
-package USACO;
+package src.USACO.Simulation;
 import java.io.*;
 
 public class WeirdAlgorithm {
